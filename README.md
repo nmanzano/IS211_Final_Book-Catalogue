@@ -1,7 +1,7 @@
 ### Run App
 $ export FLASK_APP=my_application\
 $ export FLASK_ENV=development\
-$ flask run\
+$ flask run
 
 ## Test Account
 ## Username: manzano
