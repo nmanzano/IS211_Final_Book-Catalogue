@@ -1,0 +1,53 @@
+{% extends "body_layout.html" %}
+{% block layout %}
+{{ super() }}
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{ url_for( 'dashboard' ) }}">BookShelf Dashboard</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{{ url_for( 'add_book' ) }}">Add to your collection</a></li>
+      <li><a href="{{ url_for( 'logout' ) }}">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><h2>Book Catalogue</h2></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Page Count</th>
+      <th>Average Rating</th>
+      <th>Delete Book</th>
+    </tr>
+    <tr>
+    {% for book in books %}
+    <tr>
+      <td name='title'>{{ book.title }}</td>
+      <td name="author">{{ book.author }}</td>
+      <td name="page_count">{{ book.page_count }}</td>
+      <td name="rating">{{ book.average_rating }}</td>
+      <td>
+        <form action="{{ url_for('delete_book') }}" method="post">
+          <input type="hidden" name="book_id" value={{book.id}}>
+          <button type="submit" class="btn btn-danger">Delete Book</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+
+{% endblock layout %}
