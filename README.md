@@ -1,6 +1,6 @@
 ### Run App
-$ export FLASK_APP=my_application\
-$ export FLASK_ENV=development\
+$ export FLASK_APP=app.py\
+$ export FLASK_DEBUG=1\
 $ flask run
 
 ## Test Account
